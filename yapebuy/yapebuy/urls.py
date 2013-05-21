@@ -5,6 +5,9 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
+
+	# Pruea para nueva forma de cargas plantillas y archivos estaticos
+	url(r'^$', "principal.views.inicio"),
    	
 	################################################ADMIN
    	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
