@@ -1,0 +1,37 @@
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+header.contenedor {
+  background: #339be6;
+}
+.logo {
+  color: #fff;
+}
+.busqueda {
+  padding-top: 8px;
+}
+.menu {
+  padding-top: 8px;
+}
+.menu ul li {
+  display: inline-block;
+}
+.categorias {
+  padding-right: 15px;
+}
+.categorias ul li {
+  margin: 1px 0;
+  padding: 2px 15px;
+  background: #cbac8a;
+  width: 100%;
+}
+.categorias span {
+  float: right;
+}
+.slide {
+  background: #cbac8a;
+  overflow: hidden;
+  height: 250px;
+}
