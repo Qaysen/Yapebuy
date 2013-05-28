@@ -41,3 +41,4 @@ urlpatterns = patterns(
         'principal.views.editar_categorias'
     ),
 )
+
