@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+        {% csrf_token %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="nombre">
+            <input type="submit" value="agregar">
+        </form>
+
+        <select size=10>
+            {% for categoria in categorias %}
+                <option class="categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+            {% endfor %}
+        </select>
+{% endblock contenido %}
+
+{% block script %}
+
+    $(".categorias").on("change"){
+
+        $.ajax(
+        {
+        url:'/categorias/editar',
+        data:{id:$}
+        })
+    }
+{% endblock script %}

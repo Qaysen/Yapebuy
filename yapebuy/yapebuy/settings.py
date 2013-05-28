@@ -12,8 +12,6 @@ ADMINS = (
     ('Qaysen', 'admin@qaysen.com'),
 )
 
-
-
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -42,7 +40,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Agregamos el nombre de la carpeta media.
-MEDIA_ROOT =  RUTA_PROYECTO.child("media")
+MEDIA_ROOT = RUTA_PROYECTO.child("media")
 
 # Tenemos que poner la direccion completa para que cargue los archivos.
 MEDIA_URL = 'http://localhost:8000/media/'
@@ -54,7 +52,7 @@ STATIC_URL = '/estatico/'
 
 # Agregamos el nombre de la carpeta estatico.
 STATICFILES_DIRS = (
-    RUTA_PROYECTO.child("estatico"), # ruta de archivos estaticos css y js
+    RUTA_PROYECTO.child("estatico"),  # ruta de archivos estaticos css y js
 )
 
 STATICFILES_FINDERS = (
