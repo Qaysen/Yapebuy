@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'tastypie',
     'principal',
 )
 
@@ -119,3 +120,8 @@ LOGGING = {
         },
     }
 }
+
+MONGO_DATABASE_NAME = "yapebuy"
+
+import mongoengine
+mongoengine.connect(MONGO_DATABASE_NAME)

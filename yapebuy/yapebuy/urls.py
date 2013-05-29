@@ -2,13 +2,22 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 
+from tastypie import api
+from principal.api import resources
+
 admin.autodiscover()
+
+v1_api = api.Api(api_name='v1')
+v1_api.register(resources.CategoriasResource())
+v1_api.register(resources.ProductosResource())
 
 urlpatterns = patterns(
     '',
     # Prueba para nueva forma de cargas plantillas
     # plantillas y archivos estaticos
     url(r'^$', "principal.views.inicio"),
+
+    url(r'^api/', include(v1_api.urls)),
 
     url(
         r'^admin/doc/',
@@ -41,4 +50,3 @@ urlpatterns = patterns(
         'principal.views.editar_categorias'
     ),
 )
-
