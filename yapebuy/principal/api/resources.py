@@ -1,8 +1,13 @@
 from django.contrib.auth.models import User
-from tastypie.authorization import Authorization
-from tastypie import fields
-from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
+from principal import mongomodels
 from principal.models import *
+from tastypie import authorization as tastypie_authorization
+from tastypie import fields
+from tastypie import fields as tastypie_fields
+from tastypie.authorization import Authorization
+from tastypie.resources import ALL, ALL_WITH_RELATIONS
+from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
+from tastypie_mongoengine import fields, paginator, resources
 
 class UserResource(ModelResource):
     class Meta:
@@ -58,3 +63,26 @@ class VentasResource(ModelResource):
         queryset = Ventas.objects.all()
         resource_name = 'ventas'
         authorization = Authorization()
+
+
+
+
+class CategoriasResource(resources.MongoEngineResource):
+
+    class Meta:
+        queryset = mongomodels.Categoria.objects.all()
+        allowed_methods = ('get', 'post', 'put', 'patch', 'delete')
+        filtering = {
+            'padre': ('exists',),
+        }
+
+
+class ProductosResource(resources.MongoEngineResource):
+
+    class Meta:
+        queryset = mongomodels.Producto.objects.all()
+        allowed_methods = ('get', 'post', 'put', 'patch', 'delete')
+        filtering = {
+            'precio': ALL_WITH_RELATIONS
+        }
+

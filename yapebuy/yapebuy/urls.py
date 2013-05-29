@@ -2,18 +2,21 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 from tastypie.api import Api
 from django.conf import settings
-from principal.api.resources import *
+from tastypie import api
+from principal.api import resources
 
 admin.autodiscover()
 
 v1_api = Api(api_name='v1')
-v1_api.register(UserResource())
-v1_api.register(AdministradorResource())
-v1_api.register(ClienteResource())
-v1_api.register(ProductoResource())
-v1_api.register(CarritoResource())
-v1_api.register(ProductoCarritoResource())
-v1_api.register(VentasResource())
+v1_api.register(resources.UserResource())
+v1_api.register(resources.AdministradorResource())
+v1_api.register(resources.ClienteResource())
+v1_api.register(resources.ProductoResource())
+v1_api.register(resources.CarritoResource())
+v1_api.register(resources.ProductoCarritoResource())
+v1_api.register(resources.VentasResource())
+v1_api.register(resources.CategoriasResource())
+v1_api.register(resources.ProductosResource())
 
 
 urlpatterns = patterns(
@@ -21,6 +24,8 @@ urlpatterns = patterns(
     # Prueba para nueva forma de cargas plantillas
     # plantillas y archivos estaticos
     url(r'^$', "principal.views.inicio"),
+
+    url(r'^api/', include(v1_api.urls)),
 
     url(
         r'^admin/doc/',
@@ -54,4 +59,3 @@ urlpatterns = patterns(
     ),
     (r'^api/', include(v1_api.urls)),
 )
-

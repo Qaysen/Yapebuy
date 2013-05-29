@@ -120,3 +120,8 @@ LOGGING = {
         },
     }
 }
+
+MONGO_DATABASE_NAME = "yapebuy"
+
+import mongoengine
+mongoengine.connect(MONGO_DATABASE_NAME)

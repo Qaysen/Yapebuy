@@ -2,11 +2,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from principal.mongomodels import *
-from pymongo import MongoClient
-
-client = MongoClient('127.0.0.1', 27017)
-db = client.e_commerce
+from principal import mongomodels
 
 
 def inicio(request):
@@ -14,6 +10,7 @@ def inicio(request):
         'base.html',
         context_instance=RequestContext(request)
     )
+
 
 
 def crear_producto(request):
