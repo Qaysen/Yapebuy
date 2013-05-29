@@ -69,7 +69,7 @@ def editar_categorias(request):
                 parametros = {
                     'nombre': request.POST['categoria']
                 }
-            else
+            #else
 
             nueva_categoria = Categoria(**parametros)
             nueva_categoria.save()

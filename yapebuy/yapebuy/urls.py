@@ -1,8 +1,20 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
 from django.contrib import admin
+from tastypie.api import Api
 from django.conf import settings
+from principal.api.resources import *
 
 admin.autodiscover()
+
+v1_api = Api(api_name='v1')
+v1_api.register(UserResource())
+v1_api.register(AdministradorResource())
+v1_api.register(ClienteResource())
+v1_api.register(ProductoResource())
+v1_api.register(CarritoResource())
+v1_api.register(ProductoCarritoResource())
+v1_api.register(VentasResource())
+
 
 urlpatterns = patterns(
     '',
@@ -40,5 +52,6 @@ urlpatterns = patterns(
         r'^categorias/editar$',
         'principal.views.editar_categorias'
     ),
+    (r'^api/', include(v1_api.urls)),
 )
 

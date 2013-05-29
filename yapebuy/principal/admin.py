@@ -3,8 +3,6 @@ from django.contrib import admin
 
 admin.site.register(Administrador)
 admin.site.register(Cliente)
-admin.site.register(Categoria)
-admin.site.register(Detalle)
 admin.site.register(Producto)
 admin.site.register(Carrito)
 admin.site.register(ProductoCarrito)
