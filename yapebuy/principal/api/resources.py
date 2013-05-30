@@ -27,6 +27,13 @@ class AdministradorResource(ModelResource):
             'user': ALL_WITH_RELATIONS,
         }
 
+class VendedorResource(ModelResource):
+    user=tastypie_fields.ForeignKey(UserResource, 'usuario')
+    class Meta:
+        queryset = Vendedor.objects.all()
+        resource_name = 'vendedores'
+        authorization = Authorization()
+
 class ClienteResource(ModelResource):
     user=tastypie_fields.ForeignKey(UserResource, 'usuario')
     class Meta:
