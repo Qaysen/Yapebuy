@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from principal import mongomodels
 from principal.models import *
 from tastypie import authorization as tastypie_authorization
-from tastypie import fields
 from tastypie import fields as tastypie_fields
 from tastypie.authorization import Authorization
 from tastypie.resources import ALL, ALL_WITH_RELATIONS
@@ -19,7 +18,7 @@ class UserResource(ModelResource):
         }
 
 class AdministradorResource(ModelResource):
-    user= fields.ForeignKey(UserResource,'usuario')
+    user= tastypie_fields.ForeignKey(UserResource,'usuario')
     class Meta:
         queryset = Administrador.objects.all()
         resource_name = 'administradores'
@@ -29,7 +28,7 @@ class AdministradorResource(ModelResource):
         }
 
 class ClienteResource(ModelResource):
-    user=fields.ForeignKey(UserResource, 'usuario')
+    user=tastypie_fields.ForeignKey(UserResource, 'usuario')
     class Meta:
         queryset = Cliente.objects.all()
         resource_name = 'clientes'
@@ -42,15 +41,15 @@ class ProductoResource(ModelResource):
         authorization = Authorization()
 
 class CarritoResource(ModelResource):
-    cliente=fields.ForeignKey(ClienteResource,'cliente')
+    cliente=tastypie_fields.ForeignKey(ClienteResource,'cliente')
     class Meta:
         queryset = Carrito.objects.all()
         resource_name = 'carrito'
         authorization = Authorization()
 
 class ProductoCarritoResource(ModelResource):
-    carrito=fields.ForeignKey(CarritoResource,'carrito')
-    producto=fields.ForeignKey(ProductoResource,'producto')
+    carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
+    producto=tastypie_fields.ForeignKey(ProductoResource,'producto')
     class Meta:
         #falta ver una relacion entre carrito y produto para realizar el llamado
         queryset = ProductoCarrito.objects.all()
@@ -58,7 +57,7 @@ class ProductoCarritoResource(ModelResource):
         authorization = Authorization()
 
 class VentasResource(ModelResource):
-    carrito=fields.ForeignKey(CarritoResource,'carrito')
+    carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
     class Meta:
         queryset = Ventas.objects.all()
         resource_name = 'ventas'

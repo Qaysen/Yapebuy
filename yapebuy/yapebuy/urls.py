@@ -42,20 +42,22 @@ urlpatterns = patterns(
         'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT, }
     ),
-
-    url(
-        r'^productos/nuevo$',
-        'principal.views.crear_producto'
-    ),
-
-    url(
-        r'^productos$',
-        'principal.views.lista_productos'
-    ),
-
-    url(
-        r'^categorias/editar$',
-        'principal.views.editar_categorias'
-    ),
     (r'^api/', include(v1_api.urls)),
+
+    # url(
+    #     r'^productos/nuevo$',
+    #     'principal.views.crear_producto'
+    # ),
+
+    # url(
+    #     r'^productos$',
+    #     'principal.views.lista_productos'
+    # ),
+
+    # url(
+    #     r'^categorias/editar$',
+    #     'principal.views.editar_categorias'
+    # ),
+
+
 )
