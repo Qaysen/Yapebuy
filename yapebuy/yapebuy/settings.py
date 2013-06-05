@@ -3,6 +3,7 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_USER_MODEL = 'principal.MyUser'
 # Importamos Path de unipath(pip install unipath).
 # Luego retrocedemos 2 directorios.
 from unipath import Path

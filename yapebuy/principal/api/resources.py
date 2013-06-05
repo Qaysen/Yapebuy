@@ -8,6 +8,7 @@ from tastypie.resources import ALL, ALL_WITH_RELATIONS
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie_mongoengine import fields, paginator, resources
 
+"""
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
@@ -40,6 +41,7 @@ class ClienteResource(ModelResource):
         queryset = Cliente.objects.all()
         resource_name = 'clientes'
         authorization = Authorization()
+"""
 
 class ProductoResource(ModelResource):
     class Meta:
@@ -47,15 +49,17 @@ class ProductoResource(ModelResource):
         resource_name = 'productos'
         authorization = Authorization()
 
+"""
 class CarritoResource(ModelResource):
     cliente=tastypie_fields.ForeignKey(ClienteResource,'cliente')
     class Meta:
         queryset = Carrito.objects.all()
         resource_name = 'carrito'
         authorization = Authorization()
+"""
 
 class ProductoCarritoResource(ModelResource):
-    carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
+    #carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
     producto=tastypie_fields.ForeignKey(ProductoResource,'producto')
     class Meta:
         #falta ver una relacion entre carrito y produto para realizar el llamado
@@ -64,7 +68,7 @@ class ProductoCarritoResource(ModelResource):
         authorization = Authorization()
 
 class VentasResource(ModelResource):
-    carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
+    #carrito=tastypie_fields.ForeignKey(CarritoResource,'carrito')
     class Meta:
         queryset = Ventas.objects.all()
         resource_name = 'ventas'
